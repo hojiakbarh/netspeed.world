@@ -1,0 +1,296 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Statistika{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <i class="fas fa-chart-line text-primary"></i> Umumiy Statistika
+                </h2>
+                <p class="text-muted">Internet tezligi bo'yicha tahlil va ma'lumotlar</p>
+            </div>
+        </div>
+
+        <!-- Overview Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-check-circle fa-3x text-success"></i>
+                        </div>
+                        <h2 class="stat-number">{{ total_tests }}</h2>
+                        <p class="text-muted mb-0">Jami Testlar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-download fa-3x text-primary"></i>
+                        </div>
+                        <h2 class="stat-number">{{ recent_stats.avg_download|floatformat:1|default:"0" }}</h2>
+                        <p class="text-muted mb-0">O'rtacha Download (Mbps)</p>
+                        <small class="text-muted">Oxirgi 30 kun</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-upload fa-3x text-info"></i>
+                        </div>
+                        <h2 class="stat-number">{{ recent_stats.avg_upload|floatformat:1|default:"0" }}</h2>
+                        <p class="text-muted mb-0">O'rtacha Upload (Mbps)</p>
+                        <small class="text-muted">Oxirgi 30 kun</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-signal fa-3x text-warning"></i>
+                        </div>
+                        <h2 class="stat-number">{{ recent_stats.avg_ping|floatformat:0|default:"0" }}</h2>
+                        <p class="text-muted mb-0">O'rtacha Ping (ms)</p>
+                        <small class="text-muted">Oxirgi 30 kun</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Peak Performance -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-trophy text-warning"></i> Eng Yuqori Ko'rsatkichlar
+                        </h5>
+                        <ul class="list-group list-group-flush mt-3">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span><i class="fas fa-download text-success"></i> Maksimal Download:</span>
+                                <strong>{{ recent_stats.max_download|floatformat:1|default:"0" }} Mbps</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span><i class="fas fa-upload text-primary"></i> Maksimal Upload:</span>
+                                <strong>{{ recent_stats.max_upload|floatformat:1|default:"0" }} Mbps</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span><i class="fas fa-signal text-success"></i> Minimal Ping:</span>
+                                <strong>{{ recent_stats.min_ping|default:"0" }} ms</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Tests Chart -->
+            <div class="col-md-8">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-bar text-info"></i> Kunlik Testlar (Oxirgi 7 kun)
+                        </h5>
+                        <canvas id="dailyTestsChart" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provider Statistics -->
+        {% if provider_stats %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-server text-primary"></i> Provayderlar bo'yicha Statistika
+                </h5>
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Provayder</th>
+                                <th>Testlar Soni</th>
+                                <th>O'rtacha Download</th>
+                                <th>O'rtacha Upload</th>
+                                <th>O'rtacha Ping</th>
+                                <th>Reyting</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for provider in provider_stats %}
+                            <tr>
+                                <td>
+                                    <strong>{{ provider.name }}</strong>
+                                    <br>
+                                    <small class="text-muted">{{ provider.location }}</small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">{{ provider.test_count }}</span>
+                                </td>
+                                <td>
+                                    {% if provider.avg_download >= 100 %}
+                                        <span class="badge bg-success">{{ provider.avg_download|floatformat:1 }} Mbps</span>
+                                    {% elif provider.avg_download >= 50 %}
+                                        <span class="badge bg-info">{{ provider.avg_download|floatformat:1 }} Mbps</span>
+                                    {% else %}
+                                        <span class="badge bg-warning text-dark">{{ provider.avg_download|floatformat:1 }} Mbps</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">{{ provider.avg_upload|floatformat:1 }} Mbps</span>
+                                </td>
+                                <td>
+                                    {% if provider.avg_ping <= 20 %}
+                                        <span class="badge bg-success">{{ provider.avg_ping|floatformat:0 }} ms</span>
+                                    {% elif provider.avg_ping <= 50 %}
+                                        <span class="badge bg-warning text-dark">{{ provider.avg_ping|floatformat:0 }} ms</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">{{ provider.avg_ping|floatformat:0 }} ms</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="progress" style="height: 25px;">
+                                        {% with rating=provider.avg_download|floatformat:0 %}
+                                        {% if rating >= "100" %}
+                                            <div class="progress-bar bg-success" style="width: 100%">A'lo</div>
+                                        {% elif rating >= "50" %}
+                                            <div class="progress-bar bg-info" style="width: 75%">Yaxshi</div>
+                                        {% else %}
+                                            <div class="progress-bar bg-warning" style="width: 50%">O'rtacha</div>
+                                        {% endif %}
+                                        {% endwith %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Speed Distribution -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-pie text-success"></i> Download Tezligi Taqsimoti
+                        </h5>
+                        <canvas id="downloadChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-pie text-primary"></i> Upload Tezligi Taqsimoti
+                        </h5>
+                        <canvas id="uploadChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script>
+    // Daily Tests Chart
+    const dailyLabels = [{% for item in daily_tests %}'{{ item.date|date:"d.m" }}'{% if not forloop.last %},{% endif %}{% endfor %}];
+    const dailyData = [{% for item in daily_tests %}{{ item.count }}{% if not forloop.last %},{% endif %}{% endfor %}];
+
+    new Chart(document.getElementById('dailyTestsChart'), {
+        type: 'line',
+        data: {
+            labels: dailyLabels,
+            datasets: [{
+                label: 'Testlar Soni',
+                data: dailyData,
+                borderColor: 'rgb(102, 126, 234)',
+                backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+
+    // Download Speed Distribution
+    new Chart(document.getElementById('downloadChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['A\'lo (100+)', 'Yaxshi (50-100)', 'O\'rtacha (<50)'],
+            datasets: [{
+                data: [30, 50, 20],
+                backgroundColor: [
+                    'rgb(40, 167, 69)',
+                    'rgb(52, 152, 219)',
+                    'rgb(243, 156, 18)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // Upload Speed Distribution
+    new Chart(document.getElementById('uploadChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['A\'lo (100+)', 'Yaxshi (50-100)', 'O\'rtacha (<50)'],
+            datasets: [{
+                data: [25, 55, 20],
+                backgroundColor: [
+                    'rgb(40, 167, 69)',
+                    'rgb(52, 152, 219)',
+                    'rgb(243, 156, 18)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

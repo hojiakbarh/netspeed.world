@@ -1,0 +1,696 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/apps/views.py", line 103, in home
+    return render(request, 'speedtest/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: speedtest/home.html
+"GET / HTTP/1.1" 500 86107
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4820
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: speedtest_internetprovider
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 87, in home
+    provider = get_or_create_provider(location_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 64, in get_or_create_provider
+    ).first()
+      ^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1145, in first
+    for obj in queryset[:1]:
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: speedtest_internetprovider
+"GET / HTTP/1.1" 500 142557
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: speedtest_internetprovider
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 87, in home
+    provider = get_or_create_provider(location_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 64, in get_or_create_provider
+    ).first()
+      ^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1145, in first
+    for obj in queryset[:1]:
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: speedtest_internetprovider
+"GET / HTTP/1.1" 500 142557
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 103, in home
+    return render(request, 'speedtest/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: speedtest/home.html
+"GET / HTTP/1.1" 500 86269
+"GET / HTTP/1.1" 200 26207
+"POST /test/run/ HTTP/1.1" 302 0
+Internal Server Error: /test/result/1/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 162, in test_result
+    return render(request, 'speedtest/result.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: speedtest/result.html
+"GET /test/result/1/ HTTP/1.1" 500 86905
+"GET /test/result/1/ HTTP/1.1" 200 35577
+"GET / HTTP/1.1" 200 28831
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/2/ HTTP/1.1" 200 35236
+"GET /history/ HTTP/1.1" 200 24360
+"GET / HTTP/1.1" 200 30085
+"GET /history/ HTTP/1.1" 200 24360
+"GET /statistics/ HTTP/1.1" 200 26108
+"GET /network-issues/ HTTP/1.1" 200 24318
+"GET /about/ HTTP/1.1" 200 28050
+"GET / HTTP/1.1" 200 30085
+"GET / HTTP/1.1" 200 30085
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/3/ HTTP/1.1" 200 35576
+"GET /history/ HTTP/1.1" 200 26356
+"GET /history/?provider=1&date_from=&date_to=&connection_type= HTTP/1.1" 200 26374
+"GET / HTTP/1.1" 200 31340
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/4/ HTTP/1.1" 200 35580
+"GET /history/ HTTP/1.1" 200 28358
+"GET / HTTP/1.1" 200 32599
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/5/ HTTP/1.1" 200 35277
+"GET / HTTP/1.1" 200 33856
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/6/ HTTP/1.1" 200 35580
+"GET / HTTP/1.1" 200 33859
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/7/ HTTP/1.1" 200 35277
+"GET / HTTP/1.1" 200 33860
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/8/ HTTP/1.1" 200 35240
+"POST /test/feedback/8/ HTTP/1.1" 302 0
+"GET /test/result/8/ HTTP/1.1" 200 35240
+"POST /test/feedback/8/ HTTP/1.1" 302 0
+"GET /test/result/8/ HTTP/1.1" 200 35240
+"GET /history/ HTTP/1.1" 200 36357
+"GET /history/ HTTP/1.1" 200 36357
+"GET /history/?provider=1&date_from=&date_to=&connection_type= HTTP/1.1" 200 36375
+"GET / HTTP/1.1" 200 33860
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/9/ HTTP/1.1" 200 35237
+"GET / HTTP/1.1" 200 33856
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/10/ HTTP/1.1" 200 35276
+"GET / HTTP/1.1" 200 33854
+"GET / HTTP/1.1" 200 33854
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/11/ HTTP/1.1" 200 35239
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 26207
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/1/ HTTP/1.1" 200 35536
+"GET /history/ HTTP/1.1" 200 22354
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 28830
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/2/ HTTP/1.1" 200 35275
+"GET /history/ HTTP/1.1" 200 24350
+"GET /history/ HTTP/1.1" 200 24350
+"GET / HTTP/1.1" 200 30085
+"GET / HTTP/1.1" 200 30085
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/3/ HTTP/1.1" 200 35235
+"GET / HTTP/1.1" 200 31339
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/4/ HTTP/1.1" 200 35280
+"GET /history/ HTTP/1.1" 200 28355
+"GET / HTTP/1.1" 200 32598
+"GET /statistics/ HTTP/1.1" 200 26109
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/5/ HTTP/1.1" 200 35536
+Not Found: /favicon.ico
+"GET / HTTP/1.1" 200 33852
+Not Found: /favicon.ico
+"GET /statistics/ HTTP/1.1" 200 26109
+"GET / HTTP/1.1" 200 33852
+"GET /history/ HTTP/1.1" 200 30346
+"GET / HTTP/1.1" 200 33852
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/6/ HTTP/1.1" 200 35274
+Watching for file changes with StatReloader
+"GET /statistics/ HTTP/1.1" 200 22196
+"GET / HTTP/1.1" 200 22017
+"GET /about/ HTTP/1.1" 200 24127
+"GET /history/ HTTP/1.1" 200 28825
+"GET / HTTP/1.1" 200 22017
+"GET / HTTP/1.1" 200 22017
+"GET /history/ HTTP/1.1" 200 28825
+"GET /history/ HTTP/1.1" 200 28825
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 28825
+"GET /history/ HTTP/1.1" 200 28825
+"GET /history/ HTTP/1.1" 200 28825
+"GET /history/ HTTP/1.1" 200 28825
+"GET /history/ HTTP/1.1" 200 30966
+"GET / HTTP/1.1" 200 22017
+"GET / HTTP/1.1" 200 22017
+"GET /history/ HTTP/1.1" 200 30966
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 34332
+"GET / HTTP/1.1" 200 33611
+"GET /history/ HTTP/1.1" 200 34332
+"GET / HTTP/1.1" 200 33611
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/9/ HTTP/1.1" 200 35507
+"GET /history/ HTTP/1.1" 200 36339
+"GET /history/ HTTP/1.1" 200 36339
+"GET /history/ HTTP/1.1" 200 36339
+"GET /history/ HTTP/1.1" 200 36339
+"GET / HTTP/1.1" 200 33611
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/10/ HTTP/1.1" 200 35208
+"GET /history/ HTTP/1.1" 200 38345
+"GET /history/ HTTP/1.1" 200 38345
+"GET /history/ HTTP/1.1" 200 38345
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 38345
+"GET /history/ HTTP/1.1" 200 38345
+"GET /history/ HTTP/1.1" 200 38345
+"GET / HTTP/1.1" 200 33612
+"GET /statistics/ HTTP/1.1" 200 26124
+Watching for file changes with StatReloader
+Internal Server Error: /statistics/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 257, in statistics
+    return render(request, 'speedtest/statistics.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium' is not a valid view function or pattern name.
+"GET /statistics/ HTTP/1.1" 500 169017
+Internal Server Error: /statistics/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 257, in statistics
+    return render(request, 'speedtest/statistics.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium' is not a valid view function or pattern name.
+"GET /statistics/ HTTP/1.1" 500 169017
+Watching for file changes with StatReloader
+Internal Server Error: /statistics/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 257, in statistics
+    return render(request, 'speedtest/statistics.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium' is not a valid view function or pattern name.
+"GET /statistics/ HTTP/1.1" 500 169017
+Internal Server Error: /statistics/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 257, in statistics
+    return render(request, 'speedtest/statistics.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium' is not a valid view function or pattern name.
+"GET /statistics/ HTTP/1.1" 500 154397
+Internal Server Error: /statistics/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 257, in statistics
+    return render(request, 'speedtest/statistics.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium' is not a valid view function or pattern name.
+"GET /statistics/ HTTP/1.1" 500 154551
+"GET /statistics/ HTTP/1.1" 200 29136
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py", line 103, in home
+    return render(request, 'speedtest/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium' is not a valid view function or pattern name.
+"GET / HTTP/1.1" 500 195436
+"GET / HTTP/1.1" 200 33612
+"GET /history/ HTTP/1.1" 200 38345
+"GET / HTTP/1.1" 200 33612
+"GET / HTTP/1.1" 200 33535
+"GET / HTTP/1.1" 200 33535
+"GET / HTTP/1.1" 200 33533
+"GET / HTTP/1.1" 200 33533
+"GET /history/ HTTP/1.1" 200 38266
+"GET /statistics/ HTTP/1.1" 200 26045
+"GET /statistics/ HTTP/1.1" 200 26047
+"GET / HTTP/1.1" 200 33535

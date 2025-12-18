@@ -1,0 +1,268 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Internet Tezligi Testi - Bosh Sahifa{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <!-- Main Test Card -->
+        <div class="card mb-4 glow-primary">
+            <div class="card-body text-center p-5">
+                <div class="float-animation mb-4">
+                    <i class="fas fa-tachometer-alt" style="font-size: 4rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h1 class="display-4 mb-3" style="font-weight: 800;">
+                    Internet Tezligi Testi
+                </h1>
+                <p class="lead" style="color: var(--text-secondary);">
+                    Bir necha soniyada aniq natijalar oling
+                </p>
+
+                <!-- Speed Gauge -->
+                <div class="position-relative my-5" style="width: 250px; height: 250px; margin: 0 auto;">
+                    <svg viewBox="0 0 200 200" style="width: 100%; height: 100%;">
+                        <!-- Background circle -->
+                        <circle cx="100" cy="100" r="85" fill="none"
+                                stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
+
+                        <!-- Animated gradient circle -->
+                        <defs>
+                            <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color: #00d9ff; stop-opacity: 1" />
+                                <stop offset="50%" style="stop-color: #7c3aed; stop-opacity: 1" />
+                                <stop offset="100%" style="stop-color: #f472b6; stop-opacity: 1" />
+                            </linearGradient>
+                        </defs>
+
+                        <circle cx="100" cy="100" r="85" fill="none"
+                                stroke="url(#gaugeGradient)" stroke-width="12"
+                                stroke-dasharray="534" stroke-dashoffset="534"
+                                id="progressCircle"
+                                transform="rotate(-90 100 100)"
+                                stroke-linecap="round"
+                                style="transition: stroke-dashoffset 0.3s ease;"/>
+
+                        <!-- Speed text -->
+                        <text x="100" y="95" text-anchor="middle"
+                              style="font-size: 42px; font-weight: 800; fill: #00d9ff;">
+                            <tspan id="speedValue">0</tspan>
+                        </text>
+                        <text x="100" y="115" text-anchor="middle"
+                              style="font-size: 18px; fill: var(--text-secondary);">
+                            Mbps
+                        </text>
+                    </svg>
+                </div>
+
+                <!-- Test Form -->
+                <form method="post" action="{% url 'run_test' %}" id="testForm">
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold" style="color: var(--text-secondary);">
+                            Ulanish turini tanlang:
+                        </label>
+                        <div class="btn-group w-100" role="group">
+                            <input type="radio" class="btn-check" name="connection_type" id="multi" value="multi" checked>
+                            <label class="btn btn-outline-primary" for="multi" style="border-radius: 50px 0 0 50px;">
+                                <i class="fas fa-network-wired"></i> Multi Connection
+                            </label>
+
+                            <input type="radio" class="btn-check" name="connection_type" id="single" value="single">
+                            <label class="btn btn-outline-primary" for="single" style="border-radius: 0 50px 50px 0;">
+                                <i class="fas fa-wifi"></i> Single Connection
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-lg px-5" id="startTest">
+                        <i class="fas fa-play-circle"></i> Testni Boshlash
+                    </button>
+                </form>
+
+                <!-- Progress -->
+                <div id="testProgress" class="mt-4" style="display: none;">
+                    <div class="progress" style="height: 8px; border-radius: 50px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar" role="progressbar" style="width: 0%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 50px;" id="progressBar"></div>
+                    </div>
+                    <p class="mt-3" style="color: var(--text-secondary);" id="testStatus">
+                        <i class="fas fa-spinner fa-spin"></i> Test boshlanmoqda...
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Auto-detected Info -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0" style="color: var(--primary);">
+                        <i class="fas fa-wifi"></i> Sizning Ulanishingiz
+                    </h5>
+                    <span class="badge bg-success">
+                        <i class="fas fa-check-circle"></i> Avtomatik Aniqlandi
+                    </span>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card text-center">
+                            <i class="fas fa-building fa-2x mb-3" style="color: var(--primary);"></i>
+                            <h6 style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">Provayder</h6>
+                            <p class="fw-bold mb-0" style="font-size: 1.1rem;">{{ current_provider.name }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card text-center">
+                            <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--success);"></i>
+                            <h6 style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">Joylashuv</h6>
+                            <p class="fw-bold mb-0" style="font-size: 1.1rem;">{{ location_data.city }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card text-center">
+                            <i class="fas fa-network-wired fa-2x mb-3" style="color: var(--secondary);"></i>
+                            <h6 style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">IP Manzil</h6>
+                            <p class="fw-bold mb-0" style="font-size: 1.1rem;">{{ location_data.ip }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card text-center">
+                            <i class="fas fa-globe fa-2x mb-3" style="color: var(--accent);"></i>
+                            <h6 style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">Mamlakat</h6>
+                            <p class="fw-bold mb-0" style="font-size: 1.1rem;">{{ location_data.country }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-4 mb-0">
+                    <i class="fas fa-lightbulb"></i>
+                    Barcha ma'lumotlar sizning IP manzilingiz orqali avtomatik aniqlandi.
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Tests -->
+        {% if recent_tests %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="mb-4" style="color: var(--primary);">
+                    <i class="fas fa-history"></i> Oxirgi Testlar
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--primary);">
+                                <th style="color: var(--text-secondary);">Sana</th>
+                                <th style="color: var(--text-secondary);">Download</th>
+                                <th style="color: var(--text-secondary);">Upload</th>
+                                <th style="color: var(--text-secondary);">Ping</th>
+                                <th style="color: var(--text-secondary);">Baho</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for test in recent_tests %}
+                            <tr>
+                                <td>{{ test.test_date|date:"d.m.Y H:i" }}</td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-download"></i> {{ test.download_speed }} Mbps
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">
+                                        <i class="fas fa-upload"></i> {{ test.upload_speed }} Mbps
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-warning">
+                                        <i class="fas fa-signal"></i> {{ test.ping }} ms
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge" style="background: linear-gradient(135deg, var(--primary), var(--accent));">
+                                        {{ test.speed_rating }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="{% url 'results_history' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-list"></i> Barcha Testlarni Ko'rish
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('startTest').addEventListener('click', function() {
+        const btn = this;
+        const form = document.getElementById('testForm');
+        const progress = document.getElementById('testProgress');
+        const progressBar = document.getElementById('progressBar');
+        const status = document.getElementById('testStatus');
+        const speedValue = document.getElementById('speedValue');
+        const progressCircle = document.getElementById('progressCircle');
+
+        // Show progress
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Boshlanmoqda...';
+        progress.style.display = 'block';
+
+        let percent = 0;
+        let currentSpeed = 0;
+
+        const interval = setInterval(() => {
+            percent += 3;
+            currentSpeed = Math.floor(Math.random() * 150) + 10;
+
+            // Update progress bar
+            progressBar.style.width = percent + '%';
+
+            // Update speed
+            speedValue.textContent = currentSpeed;
+
+            // Update circle (534 is circumference for r=85)
+            const offset = 534 - (534 * percent / 100);
+            progressCircle.style.strokeDashoffset = offset;
+
+            // Update status
+            if (percent < 30) {
+                status.innerHTML = '<i class="fas fa-download"></i> Download tezligi o\'lchanmoqda...';
+            } else if (percent < 60) {
+                status.innerHTML = '<i class="fas fa-upload"></i> Upload tezligi o\'lchanmoqda...';
+            } else if (percent < 90) {
+                status.innerHTML = '<i class="fas fa-signal"></i> Ping tekshirilmoqda...';
+            } else {
+                status.innerHTML = '<i class="fas fa-check-circle"></i> Yakunlanmoqda...';
+            }
+
+            if (percent >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    form.submit();
+                }, 500);
+            }
+        }, 80);
+    });
+
+    // Hover effects for stat cards
+    document.querySelectorAll('.stat-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+</script>
+{% endblock %}

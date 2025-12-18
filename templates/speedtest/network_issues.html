@@ -1,0 +1,244 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Tarmoq Muammolari{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Tarmoq Muammolari
+                </h2>
+                <p class="text-muted">Hozirgi tarmoq muammolari va xabar qoldirish</p>
+            </div>
+        </div>
+
+        <!-- Report Issue Card -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-plus-circle text-primary"></i> Muammo Haqida Xabar Berish
+                </h5>
+                <form method="post" class="mt-3">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.service_name.id_for_label }}" class="form-label">
+                                <i class="fas fa-server"></i> {{ form.service_name.label }}
+                            </label>
+                            {{ form.service_name }}
+                            {% if form.service_name.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.service_name.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.issue_type.id_for_label }}" class="form-label">
+                                <i class="fas fa-exclamation-circle"></i> {{ form.issue_type.label }}
+                            </label>
+                            {{ form.issue_type }}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.severity.id_for_label }}" class="form-label">
+                                <i class="fas fa-thermometer-half"></i> {{ form.severity.label }}
+                            </label>
+                            {{ form.severity }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Yuborish
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Active Issues -->
+        {% if issues %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-list text-danger"></i> Faol Muammolar
+                </h5>
+                <div class="list-group list-group-flush mt-3">
+                    {% for issue in issues %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col-md-1 text-center">
+                                {% if issue.severity == 'high' %}
+                                    <i class="fas fa-exclamation-circle fa-2x text-danger"></i>
+                                {% elif issue.severity == 'medium' %}
+                                    <i class="fas fa-exclamation-triangle fa-2x text-warning"></i>
+                                {% else %}
+                                    <i class="fas fa-info-circle fa-2x text-info"></i>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-5">
+                                <h6 class="mb-1">{{ issue.service_name }}</h6>
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> {{ issue.reported_at|date:"d.m.Y H:i" }}
+                                </small>
+                            </div>
+                            <div class="col-md-3">
+                                {% if issue.issue_type == 'outage' %}
+                                    <span class="badge bg-danger">
+                                        <i class="fas fa-times-circle"></i> To'liq ishlamayapti
+                                    </span>
+                                {% elif issue.issue_type == 'slow' %}
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="fas fa-hourglass-half"></i> Sekin ishlayapti
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-info">
+                                        <i class="fas fa-sync-alt"></i> Vaqti-vaqti bilan
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-3 text-end">
+                                {% if issue.severity == 'high' %}
+                                    <span class="badge bg-danger">Jiddiy</span>
+                                {% elif issue.severity == 'medium' %}
+                                    <span class="badge bg-warning text-dark">O'rtacha</span>
+                                {% else %}
+                                    <span class="badge bg-success">Past</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                <h5 class="text-success">Hozircha faol muammolar yo'q</h5>
+                <p class="text-muted">Barcha xizmatlar normal ishlayapti</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Common Issues Info -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-question-circle text-info"></i> Umumiy Muammolar va Yechimlar
+                </h5>
+                <div class="accordion mt-3" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <i class="fas fa-wifi text-danger me-2"></i>
+                                Internet ulanmayapti
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ol>
+                                    <li>Modem va routerni qayta ishga tushiring</li>
+                                    <li>Kabellarni tekshiring</li>
+                                    <li>Wi-Fi parolini tekshiring</li>
+                                    <li>Provayderingiz bilan bog'laning</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <i class="fas fa-tachometer-alt text-warning me-2"></i>
+                                Internet sekin ishlayapti
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Router yaqinroq joyga o'rnating</li>
+                                    <li>Tarmoqdagi qurilmalar sonini kamaytiring</li>
+                                    <li>Brauzer keshini tozalang</li>
+                                    <li>Viruslarni tekshiring</li>
+                                    <li>Ethernet kabel orqali ulanib ko'ring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <i class="fas fa-signal text-info me-2"></i>
+                                Wi-Fi signali zaif
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Routerni markaziy joyga qo'ying</li>
+                                    <li>To'siqlarni (devor, eshik) kamaytiring</li>
+                                    <li>Wi-Fi repeater o'rnating</li>
+                                    <li>5GHz chastotasidan foydalaning</li>
+                                    <li>Router antennasini to'g'ri yo'naltiring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Support -->
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">
+                    <i class="fas fa-headset text-primary"></i> Yordam Kerakmi?
+                </h5>
+                <p class="text-muted">Texnik yordam xizmati 24/7 ishlaydi</p>
+                <div class="row justify-content-center mt-3">
+                    <div class="col-md-4">
+                        <a href="tel:+998901234567" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-phone"></i> Qo'ng'iroq Qilish
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="mailto:support@speedtest.uz" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-envelope"></i> Email Yuborish
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-comments"></i> Online Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .list-group-item {
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+    }
+
+    .list-group-item:hover {
+        background-color: rgba(102, 126, 234, 0.05);
+        border-left-color: #667eea;
+        transform: translateX(5px);
+    }
+
+    .accordion-button {
+        font-weight: 600;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        color: #667eea;
+    }
+</style>
+{% endblock %}
