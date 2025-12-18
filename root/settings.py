@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3$qu$cqr-q792+vx2vh)p-hn!4q4u73u)j9hpp004s%#nt=5hi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://netspeed-world.onrender.com','netspeed.world.onrender.com']
+ALLOWED_HOSTS = ['https://netspeed-world.onrender.com','netspeed-world.onrender.com']
 
 # Application definition
 
