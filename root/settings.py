@@ -91,6 +91,8 @@ WSGI_APPLICATION = 'root.wsgi.application'
 # Add these at the top of your settings.py
 
 
+# Add these at the top of your settings.py
+
 load_dotenv()
 
 # Replace the DATABASES section of your settings.py with this
