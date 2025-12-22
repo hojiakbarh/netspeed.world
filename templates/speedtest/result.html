@@ -3,292 +3,534 @@
 {% block title %}Test Natijalari{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-10 mx-auto">
-        <!-- Success Header -->
-        <div class="card mb-4 text-center glow-primary">
-            <div class="card-body p-5">
-                <div class="float-animation mb-3">
-                    <i class="fas fa-check-circle" style="font-size: 5rem; color: var(--success);"></i>
-                </div>
-                <h2 class="mb-3" style="font-weight: 800;">Test Yakunlandi!</h2>
-                <p style="color: var(--text-secondary); font-size: 1.1rem;">
-                    <i class="fas fa-calendar"></i> {{ result.test_date|date:"d.m.Y, H:i" }}
-                </p>
-            </div>
-        </div>
-
-        <!-- Main Results -->
-        <div class="row mb-4">
-            <div class="col-md-4 mb-3">
-                <div class="card h-100" style="border: 2px solid var(--success); box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);">
-                    <div class="card-body text-center p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-download fa-3x" style="color: var(--success);"></i>
-                        </div>
-                        <div class="stat-number mb-2">{{ result.download_speed }}</div>
-                        <p style="color: var(--text-secondary); margin-bottom: 4px;">Mbps</p>
-                        <h5 style="font-weight: 700;">Download Tezligi</h5>
-                        {% if avg_stats.avg_download %}
-                        <small style="color: var(--text-secondary);">
-                            O'rtacha: {{ avg_stats.avg_download|floatformat:2 }} Mbps
-                        </small>
-                        {% endif %}
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <!-- Success Header -->
+            <div class="card mb-4 text-center"
+                 style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 217, 255, 0.1)); border: 2px solid var(--success); box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);">
+                <div class="card-body p-5">
+                    <div class="float-animation mb-3">
+                        <i class="fas fa-check-circle" style="font-size: 5rem; color: var(--success);"></i>
                     </div>
+                    <h1 style="font-weight: 800; margin-bottom: 15px;">Test Muvaffaqiyatli Yakunlandi! 🎉</h1>
+                    <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 5px;">
+                        <i class="fas fa-calendar-alt"></i> {{ result.test_date|date:"d.m.Y" }}
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                        <i class="fas fa-clock"></i> {{ result.test_date|date:"H:i" }}
+                    </p>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-3">
-                <div class="card h-100" style="border: 2px solid var(--primary); box-shadow: 0 8px 32px rgba(0, 217, 255, 0.3);">
-                    <div class="card-body text-center p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-upload fa-3x" style="color: var(--primary);"></i>
-                        </div>
-                        <div class="stat-number mb-2">{{ result.upload_speed }}</div>
-                        <p style="color: var(--text-secondary); margin-bottom: 4px;">Mbps</p>
-                        <h5 style="font-weight: 700;">Upload Tezligi</h5>
-                        {% if avg_stats.avg_upload %}
-                        <small style="color: var(--text-secondary);">
-                            O'rtacha: {{ avg_stats.avg_upload|floatformat:2 }} Mbps
-                        </small>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <div class="card h-100" style="border: 2px solid var(--warning); box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3);">
-                    <div class="card-body text-center p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-signal fa-3x" style="color: var(--warning);"></i>
-                        </div>
-                        <div class="stat-number mb-2">{{ result.ping }}</div>
-                        <p style="color: var(--text-secondary); margin-bottom: 4px;">ms</p>
-                        <h5 style="font-weight: 700;">Ping</h5>
-                        {% if avg_stats.avg_ping %}
-                        <small style="color: var(--text-secondary);">
-                            O'rtacha: {{ avg_stats.avg_ping|floatformat:2 }} ms
-                        </small>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Detailed Info -->
-        <div class="row mb-4">
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="mb-4" style="color: var(--primary);">
-                            <i class="fas fa-info-circle"></i> Qo'shimcha Ma'lumotlar
-                        </h5>
-                        <div class="stat-card mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="color: var(--text-secondary);">
-                                    <i class="fas fa-server"></i> Provayder:
-                                </span>
-                                <strong>{{ result.provider.name }}</strong>
-                            </div>
-                        </div>
-                        <div class="stat-card mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="color: var(--text-secondary);">
-                                    <i class="fas fa-map-marker-alt"></i> Joylashuv:
-                                </span>
-                                <strong>{{ location_data.city }}, {{ location_data.region }}</strong>
-                            </div>
-                        </div>
-                        <div class="stat-card mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="color: var(--text-secondary);">
-                                    <i class="fas fa-network-wired"></i> Ulanish turi:
-                                </span>
-                                <strong>{{ result.get_connection_type_display }}</strong>
-                            </div>
-                        </div>
-                        <div class="stat-card mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="color: var(--text-secondary);">
-                                    <i class="fas fa-chart-line"></i> Jitter:
-                                </span>
-                                <strong>{{ result.jitter|default:"N/A" }} ms</strong>
-                            </div>
-                        </div>
-                        <div class="stat-card mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="color: var(--text-secondary);">
-                                    <i class="fas fa-exclamation-triangle"></i> Paket yo'qolishi:
-                                </span>
-                                <strong>{{ result.packet_loss }}%</strong>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="color: var(--text-secondary);">
-                                    <i class="fas fa-star"></i> Umumiy baho:
-                                </span>
-                                <span class="badge bg-primary fs-6">{{ result.speed_rating }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="mb-4" style="color: var(--warning);">
-                            <i class="fas fa-lightbulb"></i> Tavsiyalar
-                        </h5>
-                        {% if result.download_speed >= 100 %}
-                        <div class="alert alert-success">
-                            <i class="fas fa-check-circle"></i>
-                            <strong>A'lo!</strong> Sizning internet tezligingiz juda yaxshi. 4K video, onlayn o'yinlar va fayl yuklash uchun ideal.
-                        </div>
-                        {% elif result.download_speed >= 50 %}
-                        <div class="alert alert-info">
-                            <i class="fas fa-info-circle"></i>
-                            <strong>Yaxshi!</strong> HD video ko'rish va asosiy onlayn ishlar uchun yetarli tezlik.
-                        </div>
-                        {% else %}
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <strong>O'rtacha.</strong> Asosiy brauzing uchun yetarli, lekin HD video uchun sekinlashishlar bo'lishi mumkin.
-                        </div>
-                        {% endif %}
-
-                        {% if result.ping > 50 %}
-                        <div class="alert alert-warning mt-2">
-                            <i class="fas fa-gamepad"></i>
-                            Yuqori ping. Onlayn o'yinlar uchun yaxshiroq natijalar uchun provayderingiz bilan bog'laning.
-                        </div>
-                        {% endif %}
-
-                        <!-- Speed Comparison -->
-                        <div class="mt-4">
-                            <h6 style="color: var(--text-secondary); margin-bottom: 16px;">
-                                <i class="fas fa-chart-bar"></i> Tezlik Taqqoslash
-                            </h6>
+            <!-- Main Results Grid -->
+            <div class="row mb-4 g-4">
+                <!-- Download -->
+                <div class="col-md-4">
+                    <div class="card h-100"
+                         style="border: 2px solid var(--success); box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3); background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);">
+                        <div class="card-body text-center p-4">
                             <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <small style="color: var(--text-secondary);">Sizning tezligingiz</small>
-                                    <small style="color: var(--primary);">{{ result.download_speed }} Mbps</small>
-                                </div>
-                                <div class="progress" style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 50px;">
-                                    <div class="progress-bar" style="width: {% widthratio result.download_speed 150 100 %}%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 50px;"></div>
-                                </div>
+                                <i class="fas fa-download fa-3x" style="color: var(--success);"></i>
                             </div>
+                            <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--success), #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 10px;">
+                                {{ result.download_speed }}
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 8px; font-size: 1.1rem;">Mbps</p>
+                            <h5 style="font-weight: 700; margin-bottom: 15px;">Download Tezligi</h5>
+
                             {% if avg_stats.avg_download %}
-                            <div>
-                                <div class="d-flex justify-content-between mb-1">
-                                    <small style="color: var(--text-secondary);">O'rtacha tezlik</small>
-                                    <small style="color: var(--success);">{{ avg_stats.avg_download|floatformat:2 }} Mbps</small>
+                                <div style="padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
+                                    <small style="color: var(--text-secondary); display: block;">O'rtacha:</small>
+                                    <strong style="color: var(--success);">{{ avg_stats.avg_download|floatformat:2 }}
+                                        Mbps</strong>
                                 </div>
-                                <div class="progress" style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 50px;">
-                                    <div class="progress-bar bg-success" style="width: {% widthratio avg_stats.avg_download 150 100 %}%; border-radius: 50px;"></div>
-                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload -->
+                <div class="col-md-4">
+                    <div class="card h-100"
+                         style="border: 2px solid var(--primary); box-shadow: 0 8px 32px rgba(0, 217, 255, 0.3); background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), transparent);">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="fas fa-upload fa-3x" style="color: var(--primary);"></i>
                             </div>
+                            <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 10px;">
+                                {{ result.upload_speed }}
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 8px; font-size: 1.1rem;">Mbps</p>
+                            <h5 style="font-weight: 700; margin-bottom: 15px;">Upload Tezligi</h5>
+
+                            {% if avg_stats.avg_upload %}
+                                <div style="padding: 10px; background: rgba(0, 217, 255, 0.1); border-radius: 10px;">
+                                    <small style="color: var(--text-secondary); display: block;">O'rtacha:</small>
+                                    <strong style="color: var(--primary);">{{ avg_stats.avg_upload|floatformat:2 }}
+                                        Mbps</strong>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ping -->
+                <div class="col-md-4">
+                    <div class="card h-100"
+                         style="border: 2px solid var(--warning); box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3); background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), transparent);">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="fas fa-signal fa-3x" style="color: var(--warning);"></i>
+                            </div>
+                            <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--warning), #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 10px;">
+                                {{ result.ping }}
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 8px; font-size: 1.1rem;">ms</p>
+                            <h5 style="font-weight: 700; margin-bottom: 15px;">Ping</h5>
+
+                            {% if avg_stats.avg_ping %}
+                                <div style="padding: 10px; background: rgba(245, 158, 11, 0.1); border-radius: 10px;">
+                                    <small style="color: var(--text-secondary); display: block;">O'rtacha:</small>
+                                    <strong style="color: var(--warning);">{{ avg_stats.avg_ping|floatformat:2 }}
+                                        ms</strong>
+                                </div>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Feedback Section -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="mb-3" style="color: var(--primary);">
-                    <i class="fas fa-comment-dots"></i> Fikr-Mulohaza Qoldiring
-                </h5>
-                <p style="color: var(--text-secondary);">Xizmat sifatini baholashda yordam bering</p>
+            <!-- Detailed Info Row -->
+            <div class="row mb-4 g-4">
+                <!-- Technical Details -->
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="mb-4" style="color: var(--primary); font-weight: 700;">
+                                <i class="fas fa-info-circle"></i> Texnik Ma'lumotlar
+                            </h5>
 
-                <form method="post" action="{% url 'submit_feedback' result.pk %}">
-                    {% csrf_token %}
-
-                    <div class="mb-4">
-                        <label class="form-label">Xizmat sifatini baholang (0-10):</label>
-                        <div class="d-flex gap-2 flex-wrap justify-content-center mt-3">
-                            {% for i in "012345678910" %}
-                            <div>
-                                <input type="radio" class="btn-check" name="rating" id="rating{{ i }}" value="{{ i }}" required>
-                                <label class="btn btn-outline-primary" for="rating{{ i }}" style="width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem;">
-                                    {{ i }}
-                                </label>
+                            <div class="stat-card mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <span style="color: var(--text-secondary);">
+                                    <i class="fas fa-server"></i> Provayder:
+                                </span>
+                                    <strong style="color: var(--primary);">{{ result.provider.name }}</strong>
+                                </div>
                             </div>
-                            {% endfor %}
+
+                            <div class="stat-card mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <span style="color: var(--text-secondary);">
+                                    <i class="fas fa-map-marker-alt"></i> Joylashuv:
+                                </span>
+                                    <strong>{{ location_data.city }}, {{ location_data.region }}</strong>
+                                </div>
+                            </div>
+
+                            <div class="stat-card mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <span style="color: var(--text-secondary);">
+                                    <i class="fas fa-network-wired"></i> Ulanish:
+                                </span>
+                                    <span class="badge bg-primary">{{ result.get_connection_type_display }}</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-card mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <span style="color: var(--text-secondary);">
+                                    <i class="fas fa-chart-line"></i> Jitter:
+                                </span>
+                                    <strong>{{ result.jitter|default:"N/A" }} ms</strong>
+                                </div>
+                            </div>
+
+                            <div class="stat-card mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <span style="color: var(--text-secondary);">
+                                    <i class="fas fa-exclamation-triangle"></i> Paket yo'qolishi:
+                                </span>
+                                    <strong style="color: {% if result.packet_loss > 1 %}var(--danger){% else %}var(--success){% endif %};">
+                                        {{ result.packet_loss }}%
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <span style="color: var(--text-secondary);">
+                                    <i class="fas fa-star"></i> Umumiy baho:
+                                </span>
+                                    <span class="badge fs-6"
+                                          style="background: linear-gradient(135deg, var(--primary), var(--accent));">
+                                    {{ result.speed_rating }}
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="mb-4" style="color: var(--warning); font-weight: 700;">
+                                <i class="fas fa-lightbulb"></i> Tavsiyalar va Tahlil
+                            </h5>
+
+                            <!-- Speed Rating -->
+                            {% if result.download_speed >= 100 %}
+                                <div class="alert alert-success" style="border-left: 4px solid var(--success);">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-check-circle fa-2x me-3" style="color: var(--success);"></i>
+                                        <div>
+                                            <strong style="font-size: 1.1rem;">A'lo Natija!</strong>
+                                            <p class="mb-0 mt-1">Sizning internet tezligingiz juda yaxshi. 4K video,
+                                                onlayn o'yinlar va katta hajmli fayllarni yuklab olish uchun ideal.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elif result.download_speed >= 50 %}
+                                <div class="alert alert-info" style="border-left: 4px solid var(--primary);">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-info-circle fa-2x me-3" style="color: var(--primary);"></i>
+                                        <div>
+                                            <strong style="font-size: 1.1rem;">Yaxshi Natija!</strong>
+                                            <p class="mb-0 mt-1">HD video ko'rish, video qo'ng'iroqlar va asosiy onlayn
+                                                ishlar uchun yetarli tezlik.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-warning" style="border-left: 4px solid var(--warning);">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-exclamation-triangle fa-2x me-3"
+                                           style="color: var(--warning);"></i>
+                                        <div>
+                                            <strong style="font-size: 1.1rem;">O'rtacha Natija</strong>
+                                            <p class="mb-0 mt-1">Asosiy brauzing uchun yetarli, lekin HD video va yuklab
+                                                olishlarda sekinlashishlar bo'lishi mumkin.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Ping Warning -->
+                            {% if result.ping > 50 %}
+                                <div class="alert alert-warning mt-3" style="border-left: 4px solid var(--danger);">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-gamepad fa-2x me-3" style="color: var(--danger);"></i>
+                                        <div>
+                                            <strong>Yuqori Ping</strong>
+                                            <p class="mb-0 mt-1">Onlayn o'yinlar uchun yaxshiroq natijalar olish uchun
+                                                provayderingiz bilan bog'laning.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Speed Comparison -->
+                            <div class="mt-4">
+                                <h6 style="color: var(--text-secondary); margin-bottom: 16px; font-weight: 600;">
+                                    <i class="fas fa-chart-bar"></i> Tezlik Taqqoslash
+                                </h6>
+
+                                <!-- Your Speed -->
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <small style="color: var(--text-secondary);">Sizning tezligingiz</small>
+                                        <strong style="color: var(--primary);">{{ result.download_speed }} Mbps</strong>
+                                    </div>
+                                    <div class="progress"
+                                         style="height: 12px; background: rgba(255,255,255,0.1); border-radius: 50px;">
+                                        <div class="progress-bar"
+                                             style="width: {% widthratio result.download_speed 200 100 %}%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 50px;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Average Speed -->
+                                {% if avg_stats.avg_download %}
+                                    <div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <small style="color: var(--text-secondary);">O'rtacha tezlik</small>
+                                            <strong style="color: var(--success);">{{ avg_stats.avg_download|floatformat:2 }}
+                                                Mbps</strong>
+                                        </div>
+                                        <div class="progress"
+                                             style="height: 12px; background: rgba(255,255,255,0.1); border-radius: 50px;">
+                                            <div class="progress-bar bg-success"
+                                                 style="width: {% widthratio avg_stats.avg_download 200 100 %}%; border-radius: 50px;"></div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Section -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="mb-3" style="color: var(--primary); font-weight: 700;">
+                        <i class="fas fa-comment-dots"></i> Fikr-Mulohaza Qoldiring
+                    </h5>
+                    <p style="color: var(--text-secondary);">Xizmat sifatini baholashda yordam bering</p>
+
+                    <form method="post" action="{% url 'submit_feedback' result.pk %}">
+                        {% csrf_token %}
+
+                        <div class="mb-4">
+                            <label class="form-label" style="font-weight: 600;">Xizmat sifatini baholang (0-10):</label>
+                            <div class="d-flex gap-2 flex-wrap justify-content-center mt-3">
+                                {% for i in "012345678910" %}
+                                    <div>
+                                        <input type="radio" class="btn-check" name="rating" id="rating{{ i }}"
+                                               value="{{ i }}" required>
+                                        <label class="btn btn-outline-primary rating-btn" for="rating{{ i }}">
+                                            {{ i }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="comment" class="form-label" style="font-weight: 600;">
+                                <i class="fas fa-pen"></i> Izoh (ixtiyoriy):
+                            </label>
+                            <textarea class="form-control" id="comment" name="comment" rows="3"
+                                      placeholder="Xizmat sifati haqida fikrlaringizni yozing..."
+                                      style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Yuborish
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row g-3">
+                        <div class="col-md-3 col-6">
+                            <a href="{% url 'home' %}" class="btn btn-primary w-100 btn-lg">
+                                <i class="fas fa-redo"></i><br>
+                                <small>Qayta Test</small>
+                            </a>
+                        </div>
+
+                        {% if user.is_authenticated %}
+                            <div class="col-md-3 col-6">
+                                <a href="{% url 'results_history' %}" class="btn btn-outline-primary w-100 btn-lg">
+                                    <i class="fas fa-history"></i><br>
+                                    <small>Tarix</small>
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if can_delete %}
+                            <div class="col-md-3 col-6">
+                                <a href="{% url 'delete_test' result.pk %}" class="btn btn-outline-danger w-100 btn-lg">
+                                    <i class="fas fa-trash"></i><br>
+                                    <small>O'chirish</small>
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        <div class="col-md-3 col-6">
+                            <button class="btn btn-outline-success w-100 btn-lg" onclick="shareResult()">
+                                <i class="fas fa-share-alt"></i><br>
+                                <small>Ulashish</small>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="comment" class="form-label">Izoh (ixtiyoriy):</label>
-                        <textarea class="form-control" id="comment" name="comment" rows="3"
-                                  placeholder="Xizmat sifati haqida fikrlaringizni yozing..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Yuborish
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="card">
-            <div class="card-body text-center">
-                <a href="{% url 'home' %}" class="btn btn-primary me-2">
-                    <i class="fas fa-redo"></i> Qayta Test Qilish
-                </a>
-                <a href="{% url 'results_history' %}" class="btn btn-outline-primary me-2">
-                    <i class="fas fa-history"></i> Tarix
-                </a>
-                <button class="btn btn-outline-primary" onclick="shareResult()">
-                    <i class="fas fa-share-alt"></i> Ulashish
-                </button>
+                    <!-- Login Reminder for Guest Users -->
+                    {% if not user.is_authenticated %}
+                        <div class="alert alert-info mt-4 mb-0" style="border-left: 4px solid var(--primary);">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-info-circle fa-2x me-3"></i>
+                                <div class="text-start">
+                                    <strong>Testlaringizni saqlang!</strong>
+                                    <p class="mb-0">Tarix va statistikani ko'rish uchun <a href="{% url 'register' %}"
+                                                                                           style="color: var(--primary);">ro'yxatdan
+                                        o'ting</a> yoki <a href="{% url 'login' %}" style="color: var(--primary);">tizimga
+                                        kiring</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    function shareResult() {
-        const text = `Internet tezligi testim:\n⬇️ Download: {{ result.download_speed }} Mbps\n⬆️ Upload: {{ result.upload_speed }} Mbps\n📡 Ping: {{ result.ping }} ms`;
+    <script>
+        // Share Result
+        function shareResult() {
+            const text = `Internet tezligi testim:\n⬇️ Download: {{ result.download_speed }} Mbps\n⬆️ Upload: {{ result.upload_speed }} Mbps\n📡 Ping: {{ result.ping }} ms\n⭐ Baho: {{ result.speed_rating }}`;
 
-        if (navigator.share) {
-            navigator.share({
-                title: 'Speed Test Natijasi',
-                text: text
-            });
-        } else {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Speed Test Natijasi',
+                    text: text
+                }).catch(() => {
+                    copyToClipboard(text);
+                });
+            } else {
+                copyToClipboard(text);
+            }
+        }
+
+        function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('Natija nusxalandi!');
+                showNotification('Natija nusxalandi!', 'success');
             });
         }
-    }
 
-    // Rating buttons animation
-    document.querySelectorAll('.btn-check').forEach((radio, index) => {
-        const label = radio.nextElementSibling;
-        label.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.boxShadow = '0 4px 20px rgba(0, 217, 255, 0.4)';
+        function showNotification(message, type) {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type} position-fixed`;
+            alert.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 250px;';
+            alert.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+
+        // Rating buttons animation
+        document.querySelectorAll('.rating-btn').forEach((label) => {
+            const radio = document.getElementById(label.getAttribute('for'));
+
+            label.addEventListener('mouseenter', function () {
+                if (!radio.checked) {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.boxShadow = '0 4px 20px rgba(0, 217, 255, 0.4)';
+                }
+            });
+
+            label.addEventListener('mouseleave', function () {
+                if (!radio.checked) {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+
+            radio.addEventListener('change', function () {
+                document.querySelectorAll('.rating-btn').forEach(btn => {
+                    btn.style.transform = 'scale(1)';
+                    btn.style.background = 'transparent';
+                    btn.style.borderColor = 'var(--primary)';
+                    btn.style.color = 'var(--primary)';
+                });
+
+                if (this.checked) {
+                    label.style.transform = 'scale(1.15)';
+                    label.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+                    label.style.borderColor = 'var(--primary)';
+                    label.style.color = 'white';
+                    label.style.boxShadow = '0 4px 20px rgba(0, 217, 255, 0.4)';
+                }
+            });
         });
-        label.addEventListener('mouseleave', function() {
-            if (!radio.checked) {
-                this.style.transform = 'scale(1)';
-                this.style.boxShadow = 'none';
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .rating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .rating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-check:checked + .rating-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: var(--primary);
+            color: white;
+            transform: scale(1.15);
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
             }
-        });
-        radio.addEventListener('change', function() {
-            if (this.checked) {
-                label.style.transform = 'scale(1.1)';
-                label.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
-                label.style.borderColor = 'var(--primary)';
+            50% {
+                transform: translateY(-20px);
             }
-        });
-    });
-</script>
+        }
+
+        .stat-card {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(0, 217, 255, 0.05);
+            border-color: rgba(0, 217, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .progress-bar {
+            transition: width 1.5s ease;
+        }
+
+        .alert {
+            animation: slideInRight 0.5s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        textarea:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25) !important;
+        }
+    </style>
 {% endblock %}

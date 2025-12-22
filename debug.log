@@ -694,3 +694,831 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'premium' not found. 'premium
 "GET /statistics/ HTTP/1.1" 200 26045
 "GET /statistics/ HTTP/1.1" 200 26047
 "GET / HTTP/1.1" 200 33535
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET / HTTP/1.1" 400 71789
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /favicon.ico HTTP/1.1" 400 71616
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET / HTTP/1.1" 400 73374
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /favicon.ico HTTP/1.1" 400 73201
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET / HTTP/1.1" 400 73434
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /favicon.ico HTTP/1.1" 400 73261
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET / HTTP/1.1" 400 73571
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/http/request.py", line 205, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /favicon.ico HTTP/1.1" 400 73261
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 33727
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4820
+"GET / HTTP/1.1" 200 33727
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/9/ HTTP/1.1" 200 35320
+"GET /history/ HTTP/1.1" 200 38553
+"GET /history/ HTTP/1.1" 200 38553
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 33786
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4820
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 33311
+"GET /history/ HTTP/1.1" 200 38137
+"GET / HTTP/1.1" 200 33311
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/10/ HTTP/1.1" 200 35176
+"GET /history/ HTTP/1.1" 200 40129
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Watching for file changes with StatReloader
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 52, in handle_no_permission
+    resolved_login_url = resolve_url(self.get_login_url())
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+"GET /history/ HTTP/1.1" 500 94285
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/history/ HTTP/1.1" 404 5127
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/history/ HTTP/1.1" 404 5127
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5094
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/models.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+Not Found: /accounts/
+"GET /accounts/ HTTP/1.1" 404 5861
+"GET / HTTP/1.1" 200 25656
+"GET /history/ HTTP/1.1" 302 0
+"GET /login/?next=/history/ HTTP/1.1" 200 23650
+"GET /register/ HTTP/1.1" 200 23705
+"GET /statistics/ HTTP/1.1" 302 0
+"GET /login/?next=/statistics/ HTTP/1.1" 200 23650
+"GET /network-issues/ HTTP/1.1" 200 23997
+"GET / HTTP/1.1" 200 25656
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/12/ HTTP/1.1" 200 42521
+"GET /register/ HTTP/1.1" 200 23705
+"GET /history/ HTTP/1.1" 302 0
+"GET /login/?next=/history/ HTTP/1.1" 200 23650
+Not Found: /account
+"GET /account HTTP/1.1" 404 5855
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 25656
+"GET /history/ HTTP/1.1" 302 0
+"GET /login/?next=/history/ HTTP/1.1" 200 23650
+"POST /login/?next=/history/ HTTP/1.1" 200 24084
+"GET /register/ HTTP/1.1" 200 23705
+"POST /register/ HTTP/1.1" 200 24665
+"POST /register/ HTTP/1.1" 200 24543
+"POST /register/ HTTP/1.1" 200 24564
+"POST /register/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 26060
+Internal Server Error: /history/
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 246, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/postgresql/base.py", line 333, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "ep-broad-heart-a4p18n6f-pooler.us-east-1.aws.neon.tech" (44.207.148.149), port 5432 failed: SSL SYSCALL error: EOF detected
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 72, in dispatch
+    if not request.user.is_authenticated:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user_id = _get_user_session_key(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 251, in _get_session
+    self._session_cache = self.load()
+                          ^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 55, in load
+    s = self._get_session_from_db()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 635, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 372, in __len__
+    self._fetch_all()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 320, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 296, in _cursor
+    self.ensure_connection()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/django/db/backends/postgresql/base.py", line 333, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hojiakbar/PycharmProjects/SPEEDTEST/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: connection to server at "ep-broad-heart-a4p18n6f-pooler.us-east-1.aws.neon.tech" (44.207.148.149), port 5432 failed: SSL SYSCALL error: EOF detected
+
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/13/ HTTP/1.1" 200 45039
+"GET /history/ HTTP/1.1" 200 35049
+"GET / HTTP/1.1" 200 28280
+"GET /history/ HTTP/1.1" 200 35049
+"GET /about/ HTTP/1.1" 200 27741
+"GET / HTTP/1.1" 200 28280
+"GET / HTTP/1.1" 200 28771
+"GET /history/ HTTP/1.1" 200 35605
+"GET /test/result/13/ HTTP/1.1" 200 45115
+"GET /statistics/ HTTP/1.1" 200 26284
+"GET / HTTP/1.1" 200 28771
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/14/ HTTP/1.1" 200 45489
+"GET /history/ HTTP/1.1" 200 40241
+"GET /test/delete/13/ HTTP/1.1" 200 21273
+"GET /history/ HTTP/1.1" 200 40241
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 29496
+"GET /history/ HTTP/1.1" 200 29496
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 29175
+"GET /history/ HTTP/1.1" 200 29175
+"GET /history/ HTTP/1.1" 200 29496
+"GET /history/ HTTP/1.1" 200 40241
+"GET /history/ HTTP/1.1" 200 39663
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 39663
+"GET / HTTP/1.1" 200 30025
+"GET /history/ HTTP/1.1" 200 39663
+"GET /test/delete/14/ HTTP/1.1" 200 21272
+Not Found: /test/delete/14/
+"POST /test/delete/14/ HTTP/1.1" 404 4254
+Watching for file changes with StatReloader
+Not Found: /test/delete/14/
+"POST /test/delete/14/ HTTP/1.1" 404 4254
+Not Found: /test
+"GET /test HTTP/1.1" 404 5846
+"GET / HTTP/1.1" 200 28771
+"GET /history/ HTTP/1.1" 200 35961
+"GET / HTTP/1.1" 200 28771
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/15/ HTTP/1.1" 200 44703
+"GET /history/ HTTP/1.1" 200 40795
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 41447
+"GET /history/ HTTP/1.1" 200 41447
+"GET /history/ HTTP/1.1" 200 41447
+Watching for file changes with StatReloader
+"GET /history/ HTTP/1.1" 200 41893
+"GET / HTTP/1.1" 200 30025
+"GET /history/ HTTP/1.1" 200 41893
+"GET /test/delete/13/ HTTP/1.1" 200 21273
+"POST /test/delete/13/ HTTP/1.1" 302 0
+"GET /history/ HTTP/1.1" 200 37079
+"GET /test/delete/15/ HTTP/1.1" 200 21272
+"POST /test/delete/15/ HTTP/1.1" 302 0
+"GET /history/ HTTP/1.1" 200 27375
+"GET /history/ HTTP/1.1" 200 27375
+"GET / HTTP/1.1" 200 26147
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 26147
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/16/ HTTP/1.1" 200 45486
+"GET /history/ HTTP/1.1" 200 37055
+"GET /history/ HTTP/1.1" 200 38323
+"GET /history/ HTTP/1.1" 200 38323
+"GET /test/result/16/ HTTP/1.1" 200 45071
+"GET /history/ HTTP/1.1" 200 37055
+"GET /test/result/16/ HTTP/1.1" 200 45071
+"GET /history/ HTTP/1.1" 200 37055
+"GET /history/ HTTP/1.1" 200 38323
+"GET /history/ HTTP/1.1" 200 37055
+"GET /history/ HTTP/1.1" 200 38323
+"GET / HTTP/1.1" 200 28770
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/17/ HTTP/1.1" 200 45496
+"GET /history/ HTTP/1.1" 200 43140
+"GET / HTTP/1.1" 200 30028
+"GET /login/?next=/statistics/ HTTP/1.1" 200 24141
+"POST /login/?next=/statistics/ HTTP/1.1" 302 0
+"GET /statistics/ HTTP/1.1" 200 26683
+"GET / HTTP/1.1" 200 30028
+"GET /about/ HTTP/1.1" 200 28232
+Not Found: /about/account
+"GET /about/account HTTP/1.1" 404 5873
+"GET / HTTP/1.1" 200 30028
+"GET /login/?next=/statistics/ HTTP/1.1" 200 24141
+"GET /logout HTTP/1.1" 301 0
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 26551
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 27110
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/18/ HTTP/1.1" 200 44809
+"GET /login/ HTTP/1.1" 200 25104
+"POST /login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 34381
+"GET /history/ HTTP/1.1" 200 47089
+"GET / HTTP/1.1" 200 33977
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/19/ HTTP/1.1" 200 49486
+"GET /history/ HTTP/1.1" 200 51910
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 27514
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/root/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 27724
+"GET /register/ HTTP/1.1" 200 25369
+"GET /login/ HTTP/1.1" 200 25314
+"POST /login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 35850
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 27724
+"GET / HTTP/1.1" 200 27320
+"GET /register/ HTTP/1.1" 200 25369
+"GET /login/ HTTP/1.1" 200 25314
+"POST /login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 35850
+"GET /login/ HTTP/1.1" 200 28300
+"GET /login/ HTTP/1.1" 200 28300
+"GET / HTTP/1.1" 200 35446
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 27724
+"GET / HTTP/1.1" 200 27320
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/20/ HTTP/1.1" 200 44185
+"GET /login/ HTTP/1.1" 200 25314
+"POST /login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 35850
+/home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/models.py changed, reloading.
+Watching for file changes with StatReloader

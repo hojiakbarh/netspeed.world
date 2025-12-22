@@ -1,7 +1,17 @@
-# models.py
+# speedtest/models.py
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+
+
+# Agar User ga qo'shimcha ma'lumot kerak bo'lsa
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
 
 
 class InternetProvider(models.Model):
@@ -20,9 +30,12 @@ class InternetProvider(models.Model):
         return f"{self.name} - {self.location}"
 
 
+# speedtest/models.py
+
 class SpeedTestResult(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    provider = models.ForeignKey(InternetProvider, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # NULL bo'lishi mumkin
+    session_id = models.CharField(max_length=255, null=True, blank=True)  # Anonim uchun
+    provider = models.ForeignKey(InternetProvider, on_delete=models.SET_NULL, null=True)  # ... qolgan fieldlar
     download_speed = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Yuklab olish tezligi (Mbps)")
     upload_speed = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Yuklash tezligi (Mbps)")
     ping = models.IntegerField(verbose_name="Ping (ms)")
@@ -39,6 +52,10 @@ class SpeedTestResult(models.Model):
         verbose_name = "Speed Test Natijasi"
         verbose_name_plural = "Speed Test Natijalari"
         ordering = ['-test_date']
+        indexes = [
+            models.Index(fields=['user', '-test_date']),
+            models.Index(fields=['session_id', '-test_date']),
+        ]
 
     def __str__(self):
         return f"{self.provider} - {self.test_date.strftime('%Y-%m-%d %H:%M')}"

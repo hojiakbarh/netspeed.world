@@ -1,14 +1,29 @@
-# views.py
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.db.models import Avg, Max, Min, Count
+# speedtest/views.py
+from django.shortcuts import  get_object_or_404
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Avg, Max, Min, Count, Q
 from django.utils import timezone
+from django.views.generic import (
+    ListView, DetailView, CreateView,
+    DeleteView, TemplateView, FormView, View
+)
+from django.urls import reverse_lazy
 from datetime import timedelta
 from .models import SpeedTestResult, InternetProvider, UserFeedback, NetworkIssue
-from .forms import SpeedTestForm, FeedbackForm, NetworkIssueReportForm, ProviderFilterForm
+from .forms import (
+    SpeedTestForm, FeedbackForm, NetworkIssueReportForm,
+    ProviderFilterForm, UserRegistrationForm, UserLoginForm
+)
 import random
 import requests
+from django.shortcuts import render
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.contrib import messages
+from django.views.decorators.http import require_http_methods
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 
 
 def get_client_ip(request):
@@ -24,7 +39,6 @@ def get_client_ip(request):
 def get_location_and_isp(ip_address):
     """IP manzildan joylashuv va ISP ma'lumotlarini olish"""
     try:
-        # ipapi.co API dan foydalanish (bepul, registration kerak emas)
         response = requests.get(f'https://ipapi.co/{ip_address}/json/', timeout=5)
         data = response.json()
 
@@ -33,7 +47,7 @@ def get_location_and_isp(ip_address):
             'city': data.get('city', 'Noma\'lum'),
             'region': data.get('region', 'Noma\'lum'),
             'country': data.get('country_name', 'Noma\'lum'),
-            'isp': data.get('org', 'Noma\'lum'),  # Internet provayder
+            'isp': data.get('org', 'Noma\'lum'),
             'latitude': data.get('latitude'),
             'longitude': data.get('longitude'),
         }
@@ -54,16 +68,13 @@ def get_or_create_provider(location_data):
     """Provayderni topish yoki yangi yaratish"""
     isp_name = location_data['isp']
 
-    # Provayderning qisqa nomini olish (masalan: "AS12345 UZTELECOM" -> "UZTELECOM")
     if ' ' in isp_name:
         isp_name = isp_name.split(' ')[-1]
 
-    # Provayderni qidirish
     provider = InternetProvider.objects.filter(
         name__icontains=isp_name
     ).first()
 
-    # Agar topilmasa, yangi yaratish
     if not provider:
         provider = InternetProvider.objects.create(
             name=isp_name,
@@ -75,212 +86,391 @@ def get_or_create_provider(location_data):
     return provider
 
 
-def home(request):
-    """Bosh sahifa - Avtomatik IP va joylashuv aniqlash bilan"""
-    form = SpeedTestForm()
+# ============================================
+# REGISTRATION & LOGIN
+# ============================================
+class RegisterView(CreateView):
+    """Ro'yxatdan o'tish"""
+    form_class = UserRegistrationForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('home')
 
-    # Foydalanuvchi IP va joylashuvini aniqlash
-    client_ip = get_client_ip(request)
-    location_data = get_location_and_isp(client_ip)
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        messages.success(self.request, f'Xush kelibsiz, {user.username}!')
+        return redirect('home')
 
-    # Provayderni topish yoki yaratish
-    provider = get_or_create_provider(location_data)
-
-    # Oxirgi testlar
-    recent_tests = SpeedTestResult.objects.select_related('provider').order_by('-test_date')[:5]
-
-    # Barcha provayderlar
-    providers = InternetProvider.objects.filter(is_active=True)
-
-    context = {
-        'form': form,
-        'recent_tests': recent_tests,
-        'providers': providers,
-        'location_data': location_data,
-        'current_provider': provider,
-        'page_title': 'Internet Tezligi Testi'
-    }
-    return render(request, 'speedtest/home.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Ro\'yxatdan O\'tish'
+        return context
 
 
-def run_test(request):
-    """Speed testni bajarish - Avtomatik ma'lumotlar bilan"""
-    if request.method == 'POST':
-        form = SpeedTestForm(request.POST)
-        if form.is_valid():
-            # Foydalanuvchi ma'lumotlarini avtomatik aniqlash
-            client_ip = get_client_ip(request)
-            location_data = get_location_and_isp(client_ip)
-            provider = get_or_create_provider(location_data)
+class LoginView(FormView):
+    """Kirish"""
+    form_class = UserLoginForm
+    template_name = 'registration/login.html'
+    success_url = reverse_lazy('home')
 
-            # Test natijalarini yaratish
-            test_result = form.save(commit=False)
-            test_result.provider = provider
-            test_result.ip_address = client_ip
+    def form_valid(self, form):
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
 
-            # Tasodifiy test natijalari (real testda ularni o'zgartiring)
-            # Bu yerda siz real speed test API dan foydalanishingiz mumkin
-            test_result.download_speed = round(random.uniform(50, 150), 2)
-            test_result.upload_speed = round(random.uniform(40, 120), 2)
-            test_result.ping = random.randint(3, 100)
-            test_result.jitter = random.randint(1, 20)
-            test_result.packet_loss = round(random.uniform(0, 5), 2)
+        if user is not None:
+            login(self.request, user)
+            messages.success(self.request, f'Xush kelibsiz, {user.username}!')
 
-            if request.user.is_authenticated:
-                test_result.user = request.user
+            # Agar redirect kerak bo'lsa
+            next_url = self.request.GET.get('next', 'home')
+            return redirect(next_url)
+        else:
+            messages.error(self.request, 'Login yoki parol noto\'g\'ri!')
+            return self.form_invalid(form)
 
-            test_result.save()
-
-            messages.success(request, 'Test muvaffaqiyatli yakunlandi!')
-            return redirect('test_result', pk=test_result.pk)
-
-    return redirect('home')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Kirish'
+        return context
 
 
-def test_result(request, pk):
-    """Test natijasini ko'rsatish"""
-    result = get_object_or_404(SpeedTestResult, pk=pk)
-    feedback_form = FeedbackForm()
+@never_cache
+@require_http_methods(["GET", "POST"])
+def logout_view(request):
+    """Chiqish - cache qilinmaydi"""
+    logout(request)
+    messages.info(request, 'Siz tizimdan chiqdingiz.')
 
-    # O'rtacha ko'rsatkichlar
-    avg_stats = SpeedTestResult.objects.filter(provider=result.provider).aggregate(
-        avg_download=Avg('download_speed'),
-        avg_upload=Avg('upload_speed'),
-        avg_ping=Avg('ping')
-    )
+    response = redirect('home')
+    # Cache larni o'chirish
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate, max-age=0'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
 
-    # Joylashuv ma'lumotlarini olish
-    location_data = get_location_and_isp(result.ip_address)
-
-    context = {
-        'result': result,
-        'feedback_form': feedback_form,
-        'avg_stats': avg_stats,
-        'location_data': location_data,
-        'page_title': 'Test Natijalari'
-    }
-    return render(request, 'speedtest/result.html', context)
+    return response
 
 
-def submit_feedback(request, pk):
-    """Feedback yuborish"""
-    result = get_object_or_404(SpeedTestResult, pk=pk)
+# ============================================
+# BOSH SAHIFA
+# ============================================
+class HomeView(TemplateView):
+    """Bosh sahifa - Hamma ko'ra oladi"""
+    template_name = 'speedtest/home.html'
 
-    if request.method == 'POST':
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            feedback = form.save(commit=False)
-            feedback.result = result
-            feedback.save()
-            messages.success(request, 'Fikr-mulohazangiz uchun rahmat!')
-            return redirect('test_result', pk=pk)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    return redirect('test_result', pk=pk)
+        client_ip = get_client_ip(self.request)
+        location_data = get_location_and_isp(client_ip)
+        provider = get_or_create_provider(location_data)
+
+        # Login qilgan foydalanuvchi o'z testlarini ko'radi
+        if self.request.user.is_authenticated:
+            recent_tests = SpeedTestResult.objects.filter(
+                user=self.request.user
+            ).select_related('provider').order_by('-test_date')[:5]
+        else:
+            recent_tests = []
+
+        context.update({
+            'form': SpeedTestForm(),
+            'recent_tests': recent_tests,
+            'providers': InternetProvider.objects.filter(is_active=True),
+            'location_data': location_data,
+            'current_provider': provider,
+            'page_title': 'Internet Tezligi Testi'
+        })
+        return context
 
 
-def results_history(request):
-    """Barcha testlar tarixi"""
-    filter_form = ProviderFilterForm(request.GET)
-    results = SpeedTestResult.objects.select_related('provider').order_by('-test_date')
+# ============================================
+# TEST YARATISH
+# ============================================
+class RunTestView(FormView):
+    """Test qilish - Hamma test qila oladi"""
+    form_class = SpeedTestForm
+    template_name = 'speedtest/home.html'
+    success_url = None
 
-    # Filtrlash
-    if filter_form.is_valid():
-        provider = filter_form.cleaned_data.get('provider')
-        date_from = filter_form.cleaned_data.get('date_from')
-        date_to = filter_form.cleaned_data.get('date_to')
-        connection_type = filter_form.cleaned_data.get('connection_type')
+    def form_valid(self, form):
+        client_ip = get_client_ip(self.request)
+        location_data = get_location_and_isp(client_ip)
+        provider = get_or_create_provider(location_data)
+
+        test_result = form.save(commit=False)
+        test_result.provider = provider
+        test_result.ip_address = client_ip
+
+        # Login qilgan - user ga biriktiramiz
+        if self.request.user.is_authenticated:
+            test_result.user = self.request.user
+        else:
+            # Anonim - session ID
+            if not self.request.session.session_key:
+                self.request.session.create()
+            test_result.session_id = self.request.session.session_key
+
+        # Test natijalari
+        test_result.download_speed = round(random.uniform(50, 150), 2)
+        test_result.upload_speed = round(random.uniform(40, 120), 2)
+        test_result.ping = random.randint(3, 100)
+        test_result.jitter = random.randint(1, 20)
+        test_result.packet_loss = round(random.uniform(0, 5), 2)
+
+        test_result.save()
+
+        messages.success(self.request, 'Test muvaffaqiyatli yakunlandi!')
+        return redirect('test_result', pk=test_result.pk)
+
+
+# ============================================
+# TEST NATIJASI
+# ============================================
+class TestResultView(DetailView):
+    """Test natijasi - hamma ko'ra oladi"""
+    model = SpeedTestResult
+    template_name = 'speedtest/result.html'
+    context_object_name = 'result'
+
+    def get_queryset(self):
+        # Login qilgan - faqat o'z testlarini
+        if self.request.user.is_authenticated:
+            return SpeedTestResult.objects.filter(user=self.request.user)
+
+        # Anonim - session bo'yicha
+        session_id = self.request.session.session_key
+        if session_id:
+            return SpeedTestResult.objects.filter(session_id=session_id)
+
+        # Hech narsa topilmasa
+        return SpeedTestResult.objects.none()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        result = self.get_object()
+
+        # O'rtacha statistika
+        if self.request.user.is_authenticated:
+            avg_stats = SpeedTestResult.objects.filter(
+                provider=result.provider,
+                user=self.request.user
+            ).aggregate(
+                avg_download=Avg('download_speed'),
+                avg_upload=Avg('upload_speed'),
+                avg_ping=Avg('ping')
+            )
+        else:
+            avg_stats = {}
+
+        location_data = get_location_and_isp(result.ip_address)
+
+        # O'chirish mumkinmi?
+        can_delete = False
+        if self.request.user.is_authenticated and result.user == self.request.user:
+            can_delete = True
+        elif not self.request.user.is_authenticated and result.session_id == self.request.session.session_key:
+            can_delete = True
+
+        context.update({
+            'feedback_form': FeedbackForm(),
+            'avg_stats': avg_stats,
+            'location_data': location_data,
+            'can_delete': can_delete,
+            'page_title': 'Test Natijalari'
+        })
+        return context
+
+
+# ============================================
+# TEST O'CHIRISH
+# ============================================
+class DeleteTestView(DeleteView):
+    """Test o'chirish - faqat o'ziniki"""
+    model = SpeedTestResult
+    template_name = 'speedtest/confirm_delete.html'
+    success_url = reverse_lazy('results_history')
+    context_object_name = 'result'
+
+    def get_queryset(self):
+        # Login qilgan
+        if self.request.user.is_authenticated:
+            return SpeedTestResult.objects.filter(user=self.request.user)
+
+        # Anonim
+        session_id = self.request.session.session_key
+        if session_id:
+            return SpeedTestResult.objects.filter(session_id=session_id)
+
+        return SpeedTestResult.objects.none()
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Test muvaffaqiyatli o\'chirildi!')
+
+        # Agar anonim bo'lsa, home ga qaytarish
+        if not request.user.is_authenticated:
+            self.success_url = reverse_lazy('home')
+
+        return super().delete(request, *args, **kwargs)
+
+
+# ============================================
+# TESTLAR TARIXI - Login KERAK
+# ============================================
+# History View
+@method_decorator(never_cache, name='dispatch')
+class ResultsHistoryView(LoginRequiredMixin, ListView):
+    """Tarix - cache qilinmaydi"""
+    model = SpeedTestResult
+    template_name = 'speedtest/history.html'
+    context_object_name = 'page_obj'
+    paginate_by = 20
+    login_url = 'login'
+
+    def get_queryset(self):
+        queryset = SpeedTestResult.objects.filter(
+            user=self.request.user
+        ).select_related('provider').order_by('-test_date')
+
+        # Filtrlash
+        provider = self.request.GET.get('provider')
+        date_from = self.request.GET.get('date_from')
+        date_to = self.request.GET.get('date_to')
+        connection_type = self.request.GET.get('connection_type')
 
         if provider:
-            results = results.filter(provider=provider)
+            queryset = queryset.filter(provider_id=provider)
         if date_from:
-            results = results.filter(test_date__gte=date_from)
+            queryset = queryset.filter(test_date__gte=date_from)
         if date_to:
-            results = results.filter(test_date__lte=date_to)
+            queryset = queryset.filter(test_date__lte=date_to)
         if connection_type:
-            results = results.filter(connection_type=connection_type)
+            queryset = queryset.filter(connection_type=connection_type)
 
-    # Paginatsiya
-    from django.core.paginator import Paginator
-    paginator = Paginator(results, 20)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+        return queryset
 
-    context = {
-        'page_obj': page_obj,
-        'filter_form': filter_form,
-        'page_title': 'Testlar Tarixi'
-    }
-    return render(request, 'speedtest/history.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter_form'] = ProviderFilterForm(self.request.GET)
+        context['page_title'] = 'Mening Testlarim'
+        return context
 
 
-def statistics(request):
-    """Statistika sahifasi"""
-    # Umumiy statistika
-    total_tests = SpeedTestResult.objects.count()
+# ============================================
+# STATISTIKA - Login KERAK
+# ============================================
+@method_decorator(never_cache, name='dispatch')
+class StatisticsView(LoginRequiredMixin, TemplateView):
+    """Statistika - cache qilinmaydi"""
+    template_name = 'speedtest/statistics.html'
+    login_url = 'login'
 
-    # Oxirgi 30 kunlik o'rtacha
-    thirty_days_ago = timezone.now() - timedelta(days=30)
-    recent_stats = SpeedTestResult.objects.filter(test_date__gte=thirty_days_ago).aggregate(
-        avg_download=Avg('download_speed'),
-        avg_upload=Avg('upload_speed'),
-        avg_ping=Avg('ping'),
-        max_download=Max('download_speed'),
-        max_upload=Max('upload_speed'),
-        min_ping=Min('ping')
-    )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
 
-    # Provayderlar bo'yicha statistika
-    provider_stats = InternetProvider.objects.annotate(
-        test_count=Count('speedtestresult'),
-        avg_download=Avg('speedtestresult__download_speed'),
-        avg_upload=Avg('speedtestresult__upload_speed'),
-        avg_ping=Avg('speedtestresult__ping')
-    ).filter(test_count__gt=0)
+        total_tests = SpeedTestResult.objects.filter(user=user).count()
 
-    # Kunlik testlar soni (oxirgi 7 kun)
-    from django.db.models.functions import TruncDate
-    daily_tests = SpeedTestResult.objects.filter(
-        test_date__gte=timezone.now() - timedelta(days=7)
-    ).annotate(
-        date=TruncDate('test_date')
-    ).values('date').annotate(
-        count=Count('id')
-    ).order_by('date')
+        thirty_days_ago = timezone.now() - timedelta(days=30)
+        recent_stats = SpeedTestResult.objects.filter(
+            user=user,
+            test_date__gte=thirty_days_ago
+        ).aggregate(
+            avg_download=Avg('download_speed'),
+            avg_upload=Avg('upload_speed'),
+            avg_ping=Avg('ping'),
+            max_download=Max('download_speed'),
+            max_upload=Max('upload_speed'),
+            min_ping=Min('ping')
+        )
 
-    context = {
-        'total_tests': total_tests,
-        'recent_stats': recent_stats,
-        'provider_stats': provider_stats,
-        'daily_tests': daily_tests,
-        'page_title': 'Statistika'
-    }
-    return render(request, 'speedtest/statistics.html', context)
+        provider_stats = InternetProvider.objects.annotate(
+            test_count=Count('speedtestresult', filter=Q(speedtestresult__user=user)),
+            avg_download=Avg('speedtestresult__download_speed', filter=Q(speedtestresult__user=user)),
+            avg_upload=Avg('speedtestresult__upload_speed', filter=Q(speedtestresult__user=user)),
+            avg_ping=Avg('speedtestresult__ping', filter=Q(speedtestresult__user=user))
+        ).filter(test_count__gt=0)
 
+        from django.db.models.functions import TruncDate
+        daily_tests = SpeedTestResult.objects.filter(
+            user=user,
+            test_date__gte=timezone.now() - timedelta(days=7)
+        ).annotate(
+            date=TruncDate('test_date')
+        ).values('date').annotate(
+            count=Count('id')
+        ).order_by('date')
 
-def network_issues(request):
-    """Tarmoq muammolari sahifasi"""
-    issues = NetworkIssue.objects.filter(is_resolved=False).order_by('-reported_at')
-
-    if request.method == 'POST':
-        form = NetworkIssueReportForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Muammo haqida xabar yuborildi!')
-            return redirect('network_issues')
-    else:
-        form = NetworkIssueReportForm()
-
-    context = {
-        'issues': issues,
-        'form': form,
-        'page_title': 'Tarmoq Muammolari'
-    }
-    return render(request, 'speedtest/network_issues.html', context)
+        context.update({
+            'total_tests': total_tests,
+            'recent_stats': recent_stats,
+            'provider_stats': provider_stats,
+            'daily_tests': daily_tests,
+            'page_title': 'Mening Statistikam'
+        })
+        return context
 
 
-def about(request):
-    """Loyiha haqida sahifa"""
-    context = {
-        'page_title': 'Loyiha Haqida'
-    }
-    return render(request, 'speedtest/about.html', context)
+# ============================================
+# FEEDBACK
+# ============================================
+class SubmitFeedbackView(CreateView):
+    """Feedback - hamma yuborishi mumkin"""
+    model = UserFeedback
+    form_class = FeedbackForm
+
+    def form_valid(self, form):
+        result = get_object_or_404(SpeedTestResult, pk=self.kwargs['pk'])
+        feedback = form.save(commit=False)
+        feedback.result = result
+        feedback.save()
+
+        messages.success(self.request, 'Fikr-mulohazangiz uchun rahmat!')
+        return redirect('test_result', pk=result.pk)
+
+
+# ============================================
+# NETWORK ISSUES
+# ============================================
+class NetworkIssuesView(CreateView):
+    """Tarmoq muammolari"""
+    model = NetworkIssue
+    form_class = NetworkIssueReportForm
+    template_name = 'speedtest/network_issues.html'
+    success_url = reverse_lazy('network_issues')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['issues'] = NetworkIssue.objects.filter(
+            is_resolved=False
+        ).order_by('-reported_at')
+        context['page_title'] = 'Tarmoq Muammolari'
+        return context
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Muammo haqida xabar yuborildi!')
+        return super().form_valid(form)
+
+
+# ============================================
+# ABOUT
+# ============================================
+class AboutView(TemplateView):
+    """Loyiha haqida"""
+    template_name = 'speedtest/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Loyiha Haqida'
+        return context
+
+
+
+
+def custom_404(request, exception):
+    """Custom 404 page"""
+    return render(request, '404.html', status=404)
+
+def custom_500(request):
+    """Custom 500 page"""
+    return render(request, '500.html', status=500)

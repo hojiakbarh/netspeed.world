@@ -1,0 +1,116 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Testni O'chirish{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-exclamation-triangle fa-4x mb-3" style="color: var(--danger);"></i>
+                        <h3 style="font-weight: 700;">Testni O'chirish</h3>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Ogohlantirish:</strong> Bu amalni qaytarib bo'lmaydi!
+                    </div>
+
+                    <div class="card mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <div class="card-body">
+                            <h5 class="mb-3" style="color: var(--primary);">
+                                <i class="fas fa-info-circle"></i> Test Ma'lumotlari:
+                            </h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="stat-card">
+                                        <small style="color: var(--text-secondary); display: block; margin-bottom: 5px;">
+                                            <i class="fas fa-server"></i> Provayder:
+                                        </small>
+                                        <strong>{{ result.provider }}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="stat-card">
+                                        <small style="color: var(--text-secondary); display: block; margin-bottom: 5px;">
+                                            <i class="fas fa-calendar"></i> Sana:
+                                        </small>
+                                        <strong>{{ result.test_date|date:"d.m.Y H:i" }}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <small style="color: var(--text-secondary); display: block; margin-bottom: 5px;">
+                                            <i class="fas fa-download"></i> Download:
+                                        </small>
+                                        <span class="badge bg-success">{{ result.download_speed }} Mbps</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <small style="color: var(--text-secondary); display: block; margin-bottom: 5px;">
+                                            <i class="fas fa-upload"></i> Upload:
+                                        </small>
+                                        <span class="badge bg-primary">{{ result.upload_speed }} Mbps</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <small style="color: var(--text-secondary); display: block; margin-bottom: 5px;">
+                                            <i class="fas fa-signal"></i> Ping:
+                                        </small>
+                                        <span class="badge bg-warning">{{ result.ping }} ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-center mb-4" style="color: var(--text-secondary); font-size: 1.1rem;">
+                        Rostdan ham bu testni o'chirmoqchimisiz?
+                    </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                <i class="fas fa-trash"></i> Ha, O'chirish
+                            </button>
+                            <a href="{% url 'results_history' %}" class="btn btn-outline-secondary btn-lg">
+                                <i class="fas fa-arrow-left"></i> Yo'q, Qaytish
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-outline-secondary {
+            border: 2px solid var(--text-secondary);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background: var(--text-secondary);
+            color: var(--darker-bg);
+            transform: translateY(-2px);
+        }
+    </style>
+{% endblock %}

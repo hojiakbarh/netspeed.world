@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cache prevention -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>{% block title %}NET SPEED{% endblock %}</title>
 
     <!-- Bootstrap CSS -->
@@ -51,18 +56,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(244, 114, 182, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 40% 20%, rgba(244, 114, 182, 0.1) 0%, transparent 50%);
             animation: gradientShift 15s ease infinite;
             pointer-events: none;
             z-index: 0;
         }
 
         @keyframes gradientShift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
         }
 
         .content-wrapper {
@@ -117,6 +125,32 @@
 
         .nav-link:hover::after {
             width: 60%;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-menu {
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-item {
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 217, 255, 0.1) !important;
+            color: var(--primary) !important;
+            transform: translateX(5px);
         }
 
         /* Cards */
@@ -371,8 +405,12 @@
 
         /* Animations */
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .float-animation {
@@ -425,22 +463,39 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <i class="fas fa-tachometer-alt"></i> NET SPEED
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">
-                            <i class="fas fa-home"></i> Bosh sahifa
-                        </a>
-                    </li>
+<div align="center">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9091843050498483"
+            crossorigin="anonymous"></script>
+    <!-- Homepage Leaderboard -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-1234567890123456"
+         data-ad-slot="1234567890"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i class="fas fa-tachometer-alt"></i> NET SPEED
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fas fa-home"></i> Bosh sahifa
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'results_history' %}">
                             <i class="fas fa-history"></i> Tarix
@@ -451,74 +506,162 @@
                             <i class="fas fa-chart-line"></i> Statistika
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'network_issues' %}">
-                            <i class="fas fa-exclamation-triangle"></i> Muammolar
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">
-                            <i class="fas fa-info-circle"></i> Ma'lumot
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+                {% endif %}
 
-    <div class="content-wrapper">
-        <!-- Messages -->
-        {% if messages %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'network_issues' %}">
+                        <i class="fas fa-exclamation-triangle"></i> Muammolar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        <i class="fas fa-info-circle"></i> Ma'lumot
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <!-- User Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false"
+                           style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(124, 58, 237, 0.2)); padding: 8px 20px !important; border-radius: 50px; border: 1px solid var(--primary);">
+                            <i class="fas fa-user-circle"></i> {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 10px; min-width: 200px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+                            <li>
+                                <div class="px-3 py-2" style="border-bottom: 1px solid var(--border-color);">
+                                    <small style="color: var(--text-secondary);">Akkaunt:</small>
+                                    <div style="color: var(--primary); font-weight: 600;">
+                                        <i class="fas fa-user"></i> {{ user.username }}
+                                    </div>
+                                    {% if user.email %}
+                                        <small style="color: var(--text-secondary);">
+                                            <i class="fas fa-envelope"></i> {{ user.email }}
+                                        </small>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" style="border-color: var(--border-color);">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'results_history' %}"
+                                   style="color: var(--text-primary); padding: 10px 15px; border-radius: 8px;">
+                                    <i class="fas fa-history text-primary"></i> Mening Testlarim
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'statistics' %}"
+                                   style="color: var(--text-primary); padding: 10px 15px; border-radius: 8px;">
+                                    <i class="fas fa-chart-line text-success"></i> Statistika
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" style="border-color: var(--border-color);">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}"
+                                   style="color: var(--danger); padding: 10px 15px; border-radius: 8px;">
+                                    <i class="fas fa-sign-out-alt"></i> Chiqish
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <!-- Login/Register -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Kirish
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}"
+                           style="background: linear-gradient(135deg, var(--success), var(--primary)); border-radius: 50px; padding: 8px 20px !important; border: 1px solid var(--success);">
+                            <i class="fas fa-user-plus"></i> Ro'yxatdan o'tish
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <!-- Messages -->
+    {% if messages %}
         <div class="container mt-3">
             {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-circle{% else %}info-circle{% endif %}"></i>
-                {{ message }}
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
-            </div>
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-circle{% else %}info-circle{% endif %}"></i>
+                    {{ message }}
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+                </div>
             {% endfor %}
         </div>
-        {% endif %}
+    {% endif %}
 
-        <!-- Main Content -->
-        <main class="container my-5">
-            {% block content %}{% endblock %}
-        </main>
-    </div>
+    <!-- Main Content -->
+    <main class="container my-5">
+        {% block content %}{% endblock %}
+    </main>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-tachometer-alt"></i> Net Speed</h5>
-                    <p class="text-secondary">Internet tezligini tekshirish va tahlil qilish platformasi</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-link"></i> Foydali Havolalar</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
-                        <li><a href="{% url 'statistics' %}">Statistika</a></li>
-                        <li><a href="{% url 'about' %}">Ma'lumot</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-envelope"></i> Bog'lanish</h5>
-                    <p class="text-secondary">
-                        <i class="fas fa-envelope"></i> info@netspeed.world
-                    </p>
-                </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5><i class="fas fa-tachometer-alt"></i> Net Speed</h5>
+                <p class="text-secondary">Internet tezligini tekshirish va tahlil qilish platformasi</p>
             </div>
-            <hr style="border-color: var(--border-color);">
-            <div class="text-center">
-                <p class="mb-0 text-secondary">&copy; 2024 Net Speed. Barcha huquqlar himoyalangan.</p>
+            <div class="col-md-4 mb-4">
+                <h5><i class="fas fa-link"></i> Foydali Havolalar</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+                    <li><a href="{% url 'statistics' %}">Statistika</a></li>
+                    <li><a href="{% url 'about' %}">Ma'lumot</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5><i class="fas fa-envelope"></i> Bog'lanish</h5>
+                <p class="text-secondary">
+                    <i class="fas fa-envelope"></i> info@netspeed.world
+                </p>
             </div>
         </div>
-    </footer>
+        <hr style="border-color: var(--border-color);">
+        <div class="text-center">
+            <p class="mb-0 text-secondary">&copy; 2024 Net Speed. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </div>
+</footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-    {% block extra_js %}{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Logout qilingandan keyin back button bosilganda reload
+    window.addEventListener('pageshow', function(event) {
+        // Agar cache dan yuklangan bo'lsa
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            // Page ni reload qilish
+            window.location.reload();
+        }
+    });
+
+    // Browser back button ni to'xtatish (agar logout qilingan bo'lsa)
+    {% if not user.is_authenticated %}
+    if (window.history && window.history.pushState) {
+        window.history.pushState('forward', null, window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState('forward', null, window.location.href);
+        };
+    }
+    {% endif %}
+</script>
+{% endblock %}
 </body>
 </html>

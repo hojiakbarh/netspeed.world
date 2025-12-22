@@ -1,0 +1,188 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Ro'yxatdan O'tish{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card"
+                 style="border: 2px solid var(--border-color); box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);">
+                <div class="card-body p-5">
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <div class="mb-3">
+                            <i class="fas fa-user-plus fa-4x"
+                               style="background: linear-gradient(135deg, var(--success), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                        </div>
+                        <h2 style="font-weight: 800; margin-bottom: 10px;">Ro'yxatdan O'tish</h2>
+                        <p style="color: var(--text-secondary); font-size: 1rem;">
+                            Testlaringizni saqlash va tahlil qilish uchun
+                        </p>
+                    </div>
+
+                    <!-- Errors -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger" style="border-left: 4px solid var(--danger);">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-exclamation-triangle fa-lg me-2"></i>
+                                <strong>Xatoliklar:</strong>
+                            </div>
+                            <ul class="mb-0" style="padding-left: 20px;">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <!-- Form -->
+                    <form method="post" id="registerForm">
+                        {% csrf_token %}
+
+                        <!-- Username -->
+                        <div class="mb-4">
+                            <label for="{{ form.username.id_for_label }}" class="form-label" style="font-weight: 600;">
+                                <i class="fas fa-user text-primary"></i> Foydalanuvchi nomi
+                            </label>
+                            {{ form.username }}
+                            <small style="color: var(--text-secondary); display: block; margin-top: 5px;">
+                                <i class="fas fa-info-circle"></i> Harflar, raqamlar va @/./+/-/_ belgilari
+                            </small>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-4">
+                            <label for="{{ form.email.id_for_label }}" class="form-label" style="font-weight: 600;">
+                                <i class="fas fa-envelope text-info"></i> Email manzil
+                            </label>
+                            {{ form.email }}
+                            <small style="color: var(--text-secondary); display: block; margin-top: 5px;">
+                                <i class="fas fa-info-circle"></i> To'g'ri email kiriting
+                            </small>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-4">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label" style="font-weight: 600;">
+                                <i class="fas fa-lock text-warning"></i> Parol
+                            </label>
+                            <div class="input-group">
+                                {{ form.password1 }}
+                                <button class="btn btn-outline-secondary" type="button"
+                                        onclick="togglePassword('id_password1', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <small style="color: var(--text-secondary); display: block; margin-top: 5px;">
+                                <i class="fas fa-info-circle"></i> Kamida 8 ta belgi
+                            </small>
+                        </div>
+
+                        <!-- Password Confirm -->
+                        <div class="mb-4">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label" style="font-weight: 600;">
+                                <i class="fas fa-lock text-warning"></i> Parolni tasdiqlang
+                            </label>
+                            <div class="input-group">
+                                {{ form.password2 }}
+                                <button class="btn btn-outline-secondary" type="button"
+                                        onclick="togglePassword('id_password2', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-success btn-lg"
+                                    style="padding: 14px; font-weight: 700;">
+                                <i class="fas fa-user-plus"></i> Ro'yxatdan O'tish
+                            </button>
+                        </div>
+
+                        <!-- Login Link -->
+                        <div class="text-center">
+                            <p style="color: var(--text-secondary); margin-bottom: 0;">
+                                Allaqachon akkauntingiz bormi?
+                            </p>
+                            <a href="{% url 'login' %}"
+                               style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                                <i class="fas fa-sign-in-alt"></i> Kirish
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="row mt-4 g-3">
+                <div class="col-6">
+                    <div class="card h-100"
+                         style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                        <div class="card-body text-center p-3">
+                            <i class="fas fa-history fa-2x mb-2" style="color: var(--success);"></i>
+                            <p class="mb-0" style="color: var(--text-secondary); font-size: 0.9rem;">Testlar tarixi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card h-100"
+                         style="background: rgba(0, 217, 255, 0.1); border: 1px solid rgba(0, 217, 255, 0.3);">
+                        <div class="card-body text-center p-3">
+                            <i class="fas fa-chart-line fa-2x mb-2" style="color: var(--primary);"></i>
+                            <p class="mb-0" style="color: var(--text-secondary); font-size: 0.9rem;">Statistika</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function togglePassword(fieldId, button) {
+            const field = document.getElementById(fieldId);
+            const icon = button.querySelector('i');
+
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Form animation
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            const button = this.querySelector('button[type="submit"]');
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuklanmoqda...';
+            button.disabled = true;
+        });
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .input-group .btn-outline-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: none;
+            color: var(--text-secondary);
+        }
+
+        .input-group .btn-outline-secondary:hover {
+            background: var(--card-hover);
+            color: var(--primary);
+        }
+
+        .form-control:focus + .btn-outline-secondary {
+            border-color: var(--primary);
+        }
+    </style>
+{% endblock %}

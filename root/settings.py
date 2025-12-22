@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3$qu$cqr-q792+vx2vh)p-hn!4q4u73u)j9hpp004s%#nt=5hi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://netspeed-world.onrender.com','netspeed-world.onrender.com']
+ALLOWED_HOSTS = ['https://netspeed-world.onrender.com','netspeed-world.onrender.com', '127.0.0.1']
 
 # Application definition
 
@@ -53,8 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',  # YANGI
+    'django.middleware.cache.FetchFromCacheMiddleware',  # YANGI
 ]
-
 ROOT_URLCONF = 'root.urls'
 
 TEMPLATES = [
@@ -169,8 +170,25 @@ LOGGING = {
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = 'DENY'
+
+# settings.py
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# Session settings
+SESSION_COOKIE_AGE = 2592000  # 30 kun
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_SECURE = not DEBUG  # HTTPS da True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Browser yopilsa ham session saqlanadi
+
+# Cache settings
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 0  # No cache for logged users
+CACHE_MIDDLEWARE_KEY_PREFIX = ''

@@ -1,14 +1,25 @@
-# urls.py (app level)
+# speedtest/urls.py
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('test/run/', views.run_test, name='run_test'),
-    path('test/result/<int:pk>/', views.test_result, name='test_result'),
-    path('test/feedback/<int:pk>/', views.submit_feedback, name='submit_feedback'),
-    path('history/', views.results_history, name='results_history'),
-    path('statistics/', views.statistics, name='statistics'),
-    path('network-issues/', views.network_issues, name='network_issues'),
-    path('about/', views.about, name='about'),
+    # Auth
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.logout_view, name='logout'),
+
+    # Main
+    path('', views.HomeView.as_view(), name='home'),
+    path('test/run/', views.RunTestView.as_view(), name='run_test'),
+    path('test/result/<int:pk>/', views.TestResultView.as_view(), name='test_result'),
+    path('test/delete/<int:pk>/', views.DeleteTestView.as_view(), name='delete_test'),
+    path('test/feedback/<int:pk>/', views.SubmitFeedbackView.as_view(), name='submit_feedback'),
+
+    # History & Stats (Login kerak)
+    path('history/', views.ResultsHistoryView.as_view(), name='results_history'),
+    path('statistics/', views.StatisticsView.as_view(), name='statistics'),
+
+    # Other
+    path('network-issues/', views.NetworkIssuesView.as_view(), name='network_issues'),
+    path('about/', views.AboutView.as_view(), name='about'),
 ]

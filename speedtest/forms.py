@@ -1,6 +1,63 @@
-# forms.py
+# speedtest/forms.py
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import SpeedTestResult, UserFeedback, NetworkIssue, InternetProvider
+
+
+class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email manzilingiz'
+        })
+    )
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Foydalanuvchi nomi'
+        })
+    )
+    password1 = forms.CharField(
+        label="Parol",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Parol'
+        })
+    )
+    password2 = forms.CharField(
+        label="Parolni tasdiqlang",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Parolni qayta kiriting'
+        })
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError('Bu email allaqachon ro\'yxatdan o\'tgan!')
+        return email
+
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Foydalanuvchi nomi yoki Email'
+        })
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Parol'
+        })
+    )
 
 
 class SpeedTestForm(forms.ModelForm):
@@ -98,31 +155,3 @@ class ProviderFilterForm(forms.Form):
         }),
         label='Ulanish turi'
     )
-
-
-class SpeedTestCompareForm(forms.Form):
-    result1 = forms.ModelChoiceField(
-        queryset=SpeedTestResult.objects.all(),
-        widget=forms.Select(attrs={
-            'class': 'form-control'
-        }),
-        label='Birinchi test'
-    )
-
-    result2 = forms.ModelChoiceField(
-        queryset=SpeedTestResult.objects.all(),
-        widget=forms.Select(attrs={
-            'class': 'form-control'
-        }),
-        label='Ikkinchi test'
-    )
-
-    def clean(self):
-        cleaned_data = super().clean()
-        result1 = cleaned_data.get('result1')
-        result2 = cleaned_data.get('result2')
-
-        if result1 and result2 and result1 == result2:
-            raise forms.ValidationError('Iltimos, turli testlarni tanlang!')
-
-        return cleaned_data
