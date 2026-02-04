@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'speedtest',
     # "ckeditor",
 
+    'django.contrib.sitemaps',
+
 ]
 
 MIDDLEWARE = [

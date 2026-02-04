@@ -19,11 +19,50 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
+import os
+from django.contrib.sitemaps.views import sitemap
+from speedtest.sitemaps import StaticViewSitemap
+from django.http import HttpResponse
+
+def google_verify(request):
+    file_path = os.path.join(settings.BASE_DIR, "google65b25acc2d882302.html")
+    with open(file_path, "r") as f:
+        return HttpResponse(f.read(), content_type="text/html")
+
+def robots_txt(request):
+    lines = [
+        "User-Agent: *",
+        "Allow: /",
+        "Sitemap: https://netspeed-world.onrender.com/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('speedtest.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+]
+
+urlpatterns += [
+    path("robots.txt", robots_txt),
+]
+
+
+urlpatterns += [
+    path(
+        "google65b25acc2d882302.html",
+        google_verify
+    ),
+]
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
+
+urlpatterns += [
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
 ]
 
 # Media files (Development only)

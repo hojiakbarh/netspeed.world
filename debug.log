@@ -1522,3 +1522,10 @@ Watching for file changes with StatReloader
 "GET / HTTP/1.1" 200 35850
 /home/hojiakbar/PycharmProjects/SPEEDTEST/speedtest/models.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 27320
+"POST /test/run/ HTTP/1.1" 302 0
+"GET /test/result/34/ HTTP/1.1" 200 45012
+"GET /login/ HTTP/1.1" 200 25314
+"GET /register/ HTTP/1.1" 200 25369
+"GET / HTTP/1.1" 200 27320
