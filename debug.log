@@ -1529,3 +1529,9 @@ Watching for file changes with StatReloader
 "GET /login/ HTTP/1.1" 200 25314
 "GET /register/ HTTP/1.1" 200 25369
 "GET / HTTP/1.1" 200 27320
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 27320
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 6360
+"GET /login/ HTTP/1.1" 200 25314
+"GET /register/ HTTP/1.1" 200 25369
